@@ -20,10 +20,19 @@ namespace Books
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new Bundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/toastr.min.js",
+                      "~/Scripts/fontawesome.min.css"
+                      
+
+
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/icofont.min.css",
+                      "~/Content/fontawesome.min.css",
+                      "~/Content/toastr.min.css",
                       "~/Content/site.css"));
         }
     }

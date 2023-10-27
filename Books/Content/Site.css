@@ -18,3 +18,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.toast-message {
+    margin-top: 100px !important;
+}
