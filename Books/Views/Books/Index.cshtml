@@ -43,9 +43,9 @@ else
                             <i class="fa fa-edit"></i> Edit
                         </a>
 
-                        <a href="@Url.Action("Edit", new {id = book.Id})" class="btn btn-danger btn-sm">
+                        <span  class="btn btn-danger btn-sm js-delete" data-id="@book.Id">
                             <i class="fa fa-trash"></i> Delete
-                        </a>
+                        </span>
                     </td>
                 </tr>
             }
@@ -58,10 +58,44 @@ else
     <script>
 
         $(document).ready(function () {
+
+            $(".js-delete").on("click", function () {
+                var btn = $(this);
+
+
+                var result = confirm("Are you sure ? ");
+                if (result) {
+
+                    $.ajax({
+
+                        url: '/Api/Books/' + btn.data('id'),
+                        method: 'DELETE',
+                        success: function () {
+
+
+                            var Messagee = "Data deleted succesfully";
+                            toastr.success(Messagee);
+                           
+                            btn.parents("tr").fadeOut(400);
+
+                           
+
+                        },
+                        error: function () {
+                            toastr.error("Somethings went wrong !");
+                        }
+
+                    });
+                }
+
+            })
+
             var Message = $('#Message').text();
             if (Message !== '') {
                 toastr.success(Message);
             }
+
+           
             
         });
     </script>

@@ -22,8 +22,14 @@ namespace Books.Controllers.Api
         public IHttpActionResult DeleteBook(int id)
         {
             var book = _context.Books.Find(id);
+           
             if(book == null)
+            {
                 return NotFound();
+            }
+               
+            _context.Books.Remove(book);
+            _context.SaveChanges();
 
 
             return Ok();
